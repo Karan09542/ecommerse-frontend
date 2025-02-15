@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+:root {
+  --site-color: #2874f0;
+  --site-yellow: #ffe500;
+  --site-gray: #f0f0f0;
+  --text-gray: #878787;
+  --text-orange: #fb641b;
+  --text-error: #ff6161;
+  --text-21: #212121;
+  --hr-color: #f0f0f0;
+  --gray-a: #fafafa;
+  --site-green: #388e3c;
+}
+.body {
+  background-color: #f1f2f4;
+}
+
+.child-flex * {
+  display: flex;
+  align-items: center;
+}
+.skew {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+@layer components {
+  .text-dot {
+    @apply overflow-hidden text-ellipsis text-nowrap;
+  }
+  .tippy-class {
+    @apply [&>div:first-child]:!p-0 [&>div:first-child]:bg-white [&>div:last-child]:before:!text-white shadow-md;
+  }
+  .fixed-container {
+    @apply fixed bg-black/75 w-full h-screen z-10;
+  }
+  .absolute-to-fixed {
+    @apply absolute bg-white left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 max-w-[400px] w-full p-5 rounded;
+  }
+  .filter-heading {
+    @apply text-[1.125rem] text-[var(--text-21)] font-semibold px-4 py-2;
+  }
+  .filter-subheading {
+    @apply text-[0.8125rem] text-[var(--text-21)] font-semibold px-4 py-2 uppercase;
+  }
+  .price-filter {
+    @apply text-[var(--text-21)] outline-none p-2 rounded-md ring-2 ring-[#bdbdbd]  focus:ring-[var(--site-color)] font-medium placeholder:text-[var(--text-gray)];
+  }
+}
+
+hr {
+  color: var(--hr-color);
+}
+
+.slick-shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.slick-active-dot {
+  background-color: var(--site-color);
+  animation: width-increase 3s ease-out 0s infinite;
+}
+
+@keyframes width-increase {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.slick-slider .slick-list .slick-track {
+  display: flex;
+  align-items: flex-end;
+}
+
+.product-card {
+  width: 300px;
+  background: #fff;
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+  text-align: center;
+  padding: 15px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-info {
+  padding: 0 10px 10px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  /* margin: 10px 0; */
+}
+.product-name::first-letter {
+  text-transform: capitalize;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+.product-description::first-letter {
+  text-transform: capitalize;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #007bff;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.product-rating {
+  font-size: 14px;
+  color: #f4b400;
+  display: flex;
+  column-gap: 0.2rem;
+}
+.product-rating > span {
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+  background-color: var(--site-green);
+  color: white;
+  padding: 0.1rem 0.3125rem;
+  border-radius: 0.3rem;
+  font-size: small;
+}
+
+.product-category {
+  font-size: 14px;
+  color: #888;
+  margin: 5px 0;
+}
+
+.product-stock {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.in-stock {
+  color: green;
+}
+
+.out-of-stock {
+  color: red;
+}
+
+.add-to-cart {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.add-to-cart:hover {
+  background: #0056b3;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--hr-color);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.table-product-header {
+  color: rgb(92, 92, 92);
+  padding: 0 1rem;
+}
+
+.table-product-name > div {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+.table-product-name > div > p::first-letter {
+  text-transform: capitalize;
+}
+
+.table-product-quantity > div {
+  text-align: center;
+  border: 1px solid var(--hr-color);
+  max-width: 100px;
+  margin: auto;
+}
+.table-product-quantity > div > div {
+  cursor: pointer;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.2rem;
+  user-select: none;
+}
+.table-product-quantity > div > div:active {
+  background-color: rgba(128, 0, 128, 0.878);
+}
+
+.table-product-quantity > div > p {
+  padding: 0.1rem 0rem;
+}
