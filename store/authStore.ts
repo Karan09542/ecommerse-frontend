@@ -65,7 +65,7 @@ export const useAccessTokenStore = create<AccessTokenState>((set) => ({
 }));
 // `--> useBaseURLStore
 export const useBaseURLStore = create<BaseURLState>((set) => ({
-  baseURL: "",
+  baseURL: import.meta.env?.VITE_BASE_URL ?? "",
   setBaseURL: (baseURL) => set({ baseURL }),
 }));
 // `--> useShouldFetchUserStore
