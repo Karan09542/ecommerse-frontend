@@ -288,7 +288,7 @@ const Dashboard: React.FC = () => {
         <hr />
 
         <div
-          className={`grid grid-cols-2 gap-2 mt-7 px-10 max-w-[1500px] mx-auto`}
+          className={`grid grid-cols-2 gap-2 mt-7 px-10 max-w-[1500px] mx-auto w-full`}
         >
           <DashProduct baseURL={baseURL} accessToken={accessToken} />
           <form onSubmit={handleSubmit(onSubmit)}>
