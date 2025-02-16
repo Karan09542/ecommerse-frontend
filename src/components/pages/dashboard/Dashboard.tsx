@@ -170,7 +170,7 @@ const Dashboard: React.FC = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [window.outerWidth]);
+  }, []);
 
   const settings = {
     dots: false,
