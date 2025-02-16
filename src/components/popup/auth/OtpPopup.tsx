@@ -13,6 +13,11 @@ const OtpPopup: React.FC<OtpPopupProps> = ({ isCopyIcon = true }) => {
   const otp = useOtpStore((state) => state.otp);
   const setOtp = useOtpStore((state) => state.setOtp);
   const setOpenModel = useOpenModelStore((state) => state.setOpenModel);
+
+  const handleClose = () => {
+    setOtp("");
+    setOpenModel(null);
+  };
   return (
     <>
       <ToastContainer
@@ -29,7 +34,7 @@ const OtpPopup: React.FC<OtpPopupProps> = ({ isCopyIcon = true }) => {
       />
       <div className="fixed bg-black/75 w-full h-screen z-10">
         <div className="absolute bg-white left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 max-w-[400px] w-full p-5 rounded">
-          <CrossButton onClick={() => setOpenModel(null)} className="-ml-2" />
+          <CrossButton onClick={handleClose} className="-ml-2" />
           <h1 className="text-lg font-semibold text-[var(--site-color)]">
             An Email has been sent to your email address Please enter the OTP on
             the email

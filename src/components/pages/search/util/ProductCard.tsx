@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductProps } from "../../../../utils/types";
-import { cn, commonHeadersAndMethod } from "../../../../utils/fn_utils";
+import { cn } from "../../../../utils/fn_utils";
 import { FaStar } from "react-icons/fa";
 import {
   useAccessTokenStore,
@@ -14,12 +14,12 @@ const ProductCard: React.FC<ProductProps & { className?: string }> = ({
   name,
   description,
   price,
-  rating,
+  // rating,
   images,
-  numReviews,
-  category,
-  updatedAt,
-  createdAt,
+  // numReviews,
+  // category,
+  // updatedAt,
+  // createdAt,
   stock,
   className,
 }) => {

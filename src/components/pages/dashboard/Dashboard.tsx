@@ -56,7 +56,8 @@ const Dashboard: React.FC = () => {
       type: "text",
       register: register("name", {
         required: { value: true, message: "Required" },
-        validate: (value) => /\S/.test(value) || "Product Name is Required",
+        validate: (value) =>
+          /\S/.test(value || "") || "Product Name is Required",
       }),
     },
     // description
@@ -66,7 +67,8 @@ const Dashboard: React.FC = () => {
       type: "text",
       register: register("description", {
         required: { value: true, message: "Required" },
-        validate: (value) => /\S/.test(value) || "Description is Required",
+        validate: (value) =>
+          /\S/.test(value || "") || "Description is Required",
       }),
     },
     // price
@@ -76,7 +78,8 @@ const Dashboard: React.FC = () => {
       type: "number",
       register: register("price", {
         required: { value: true, message: "Required" },
-        validate: (value) => value >= 0 || "Price must be positive number",
+        validate: (value) =>
+          (value as number) >= 0 || "Price must be positive number",
       }),
     },
     // stock
@@ -86,7 +89,8 @@ const Dashboard: React.FC = () => {
       type: "number",
       register: register("stock", {
         required: { value: true, message: "Required" },
-        validate: (value) => value >= 0 || "Stock must be positive number",
+        validate: (value) =>
+          (value as number) >= 0 || "Stock must be positive number",
       }),
     },
     // category
@@ -96,7 +100,7 @@ const Dashboard: React.FC = () => {
       type: "text",
       register: register("category", {
         required: { value: true, message: "Required" },
-        validate: (value) => /\S/.test(value) || "Category is Required",
+        validate: (value) => /\S/.test(value || "") || "Category is Required",
       }),
     },
     // brand
@@ -105,10 +109,10 @@ const Dashboard: React.FC = () => {
       name: "brand",
       type: "text",
       register: register("brand", {
-        validate: (value: string) => {
+        validate: (value) => {
           if (value === "") return true;
           else {
-            return /\S/.test(value) || "Brand is not empty";
+            return /\S/.test(value || "") || "Brand is not empty";
           }
         },
       }),
@@ -170,12 +174,12 @@ const Dashboard: React.FC = () => {
   };
 
   const resizeImageToBase64 = async (
-    file: File,
+    file: any,
     maxWidth: number,
     maxHeight: number,
     index: number
   ) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((_resolve, reject) => {
       const img = new Image();
       img.src = URL.createObjectURL(file?.[0]);
       img.onload = async () => {
@@ -279,10 +283,14 @@ const Dashboard: React.FC = () => {
             {/* normal inputs */}
             {inputList.map((item) => (
               <div key={item?.label} className="mb-3">
-                <InputField {...item} />
-                {errors[item?.name] && (
+                <InputField
+                  label={item?.label}
+                  register={item?.register}
+                  type={item?.type}
+                />
+                {errors[item?.name as keyof ProductProps] && (
                   <ErrorMessage
-                    message={errors[item?.name]?.message}
+                    message={errors[item?.name as keyof ProductProps]?.message}
                     className="mb-4"
                   />
                 )}
@@ -312,7 +320,7 @@ const Dashboard: React.FC = () => {
               {fields.map((item, index) => (
                 <div key={item?.id} className="flex gap-1 items-center">
                   <InputField
-                    type={type?.[index]}
+                    type={type?.[index as keyof typeof type]}
                     register={register(`images.${index}`)}
                     className="grow"
                   />
@@ -356,7 +364,7 @@ const Dashboard: React.FC = () => {
                 className="bg-red-500 active:bg-green-400"
                 onClick={() => {
                   console.log(images);
-                  images?.map((item: File | string, index: number) =>
+                  images?.map((_item: File | string, index: number) =>
                     remove(index)
                   );
                   if (isToUpdate) {

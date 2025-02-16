@@ -45,7 +45,7 @@ const Product: React.FC<ProductProps> = ({
     autoplay: false,
     autoplaySpeed: 3000,
     pauseOnHover: false,
-    beforeChange: (current: number, next: number) => setCurrentSlide(next),
+    beforeChange: (_: number, next: number) => setCurrentSlide(next),
   };
   const setInitializeProduct = useProductStore(
     (state) => state.setInitializeProduct
@@ -87,7 +87,7 @@ const Product: React.FC<ProductProps> = ({
             className="rounded-full p-2.5"
             onClick={() => {
               setOpenModel("confirm product delete");
-              setProductId(_id);
+              setProductId(_id || "");
             }}
           />
         </div>
@@ -125,10 +125,12 @@ const Product: React.FC<ProductProps> = ({
             <span>Num of Reviews</span> : <span>{numReviews}</span>
           </p>
           <p>
-            <span>Created At</span> : <span>{decorateDate(createdAt)}</span>
+            <span>Created At</span> :{" "}
+            <span>{decorateDate(createdAt || "")}</span>
           </p>
           <p>
-            <span>Updated At</span> : <span>{decorateDate(updatedAt)}</span>
+            <span>Updated At</span> :{" "}
+            <span>{decorateDate(updatedAt || "")}</span>
           </p>
           <p>
             <span>Description</span> : <span>{description}</span>

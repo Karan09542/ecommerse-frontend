@@ -13,8 +13,8 @@ const Search: React.FC = () => {
 
   const [results, setResults] = React.useState<ProductProps[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [page, setPage] = React.useState(1);
+  const [searchParams] = useSearchParams();
+  const [page, _setPage] = React.useState(1);
   useEffect(() => {
     setLoading(true);
     let query = "";

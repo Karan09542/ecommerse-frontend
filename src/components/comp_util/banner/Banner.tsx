@@ -37,7 +37,7 @@ const Banner: React.FC<BannerProps> = ({
   noOfImageShow = 1,
   width,
   height,
-  imageWidth,
+  // imageWidth,
   imageHeight,
   infiniteScroll = false,
 }) => {
@@ -95,7 +95,7 @@ const Banner: React.FC<BannerProps> = ({
         </div>
       );
     },
-    beforeChange: (oldIndex: number, newIndex: number) => {
+    beforeChange: (_: number, newIndex: number) => {
       if (isProducts) setCurrentSlide(newIndex);
     },
   };
@@ -137,7 +137,7 @@ const Banner: React.FC<BannerProps> = ({
                   >
                     <p className="text-dot">{item?.name}</p>
                     <p className="fonts-semibold">
-                      {handlePriceLabel(item?.type, item?.price)}
+                      {handlePriceLabel(item?.type, item?.price || "")}
                     </p>
                   </div>
                 )}

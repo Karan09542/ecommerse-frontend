@@ -20,7 +20,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   useEffect(() => {
     const searchText = searchParams.get("searchText");
-    setInputValue(searchText);
+    setInputValue(searchText || "");
     if (location.pathname === "/") {
       setInputValue("");
     }

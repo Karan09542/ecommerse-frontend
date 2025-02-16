@@ -1,6 +1,6 @@
 import React, { useId } from "react";
 import { cn } from "../../../utils/fn_utils.ts";
-import { UseFormRegister, FieldValues } from "react-hook-form";
+// import { UseFormRegister, FieldValues } from "react-hook-form";
 
 interface InputFieldProps {
   label?: React.ReactNode;
@@ -14,7 +14,7 @@ interface InputFieldProps {
   before?: React.ReactNode;
   after?: React.ReactNode;
   inputStyle?: React.CSSProperties;
-  register?: UseFormRegister<FieldValues>;
+  register?: any;
 }
 const InputField: React.FC<InputFieldProps> = ({
   label,

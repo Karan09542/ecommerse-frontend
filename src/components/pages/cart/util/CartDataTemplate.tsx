@@ -27,9 +27,9 @@ const CartDataTemplate: React.FC<CartDataTemplateProps> = ({
   baseURL,
   accessToken,
 }) => {
-  const price = parseFloat(product?.price);
+  const price = parseFloat(product?.price as string);
   const [increaseQuantity, setIncreaseQuantity] = React.useReducer(
-    (prev: number, next: number) => {
+    (_prev: number, next: number) => {
       if (next < 1) return 1;
       return next;
     },

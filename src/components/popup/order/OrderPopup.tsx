@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import InputField from "../../comp_util/input-field/InputField";
 import ErrorMessage from "../../comp_util/message/ErrorMessage";
 import Button from "../../comp_util/button/Button";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 interface OrderPopupProps {
   className?: string;
@@ -36,13 +36,11 @@ const OrderPopup: React.FC<OrderPopupProps> = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: { deliveryStatus: "processing" },
-  });
+  } = useForm();
 
   const baseURL = useBaseURLStore((state) => state.baseURL);
   const accessToken = useAccessTokenStore((state) => state.accessToken);
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: object) => {
     setLoading(true);
     fetch(`${baseURL}/order-product/add`, {
       ...commonHeadersAndMethod({ accessToken }),
@@ -93,8 +91,10 @@ const OrderPopup: React.FC<OrderPopupProps> = ({
                   },
                 })}
               />
-              {errors.deliveryAddress && (
-                <ErrorMessage message={errors.deliveryAddress.message} />
+              {errors?.deliveryAddress && (
+                <ErrorMessage
+                  message={`${errors.deliveryAddress.message || ""}`}
+                />
               )}
             </div>
             {/* payment method */}
@@ -116,11 +116,11 @@ const OrderPopup: React.FC<OrderPopupProps> = ({
                 <option value="debit">Debit</option>
               </select>
               {errors?.paymentMethod && (
-                <ErrorMessage message={errors?.paymentMethod.message} />
+                <ErrorMessage
+                  message={String(errors?.paymentMethod.message || "")}
+                />
               )}
             </div>
-            {/* default */}
-            <input type="text" register={register("deliveryStatus")} hidden />
 
             {/* order button */}
             <Button

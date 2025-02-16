@@ -1,11 +1,10 @@
 import React from "react";
-import InputField from "../../comp_util/input-field/InputField";
 import { useSearchParams } from "react-router";
 
 const SearchLeft: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [min, setMin] = React.useState<number>(
-    searchParams.get("price[gte]") || 0
+    parseInt(searchParams.get("price[gte]") || "")
   );
   const [max, setMax] = React.useState<number>(10_00_000);
 

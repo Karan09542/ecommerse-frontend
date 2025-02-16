@@ -9,7 +9,7 @@ import {
 } from "../../../../store/authStore";
 import { handleDeleteProduct } from "../../../utils/fetch_handler";
 
-const ConfirmProductDeletePopup = () => {
+const ConfirmProductDeletePopup: React.FC = () => {
   const setOpenModel = useOpenModelStore((state) => state.setOpenModel);
   //   product id
   const productId = useProductStore((state) => state.productId);

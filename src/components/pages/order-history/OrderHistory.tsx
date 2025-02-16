@@ -11,7 +11,7 @@ const OrderHistory: React.FC = () => {
   const baseURL = useBaseURLStore((state) => state.baseURL);
   const accessToken = useAccessTokenStore((state) => state.accessToken);
 
-  const [orders, setOrders] = React.useState([]);
+  const [orders, setOrders] = React.useState<any[]>([]);
   const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {

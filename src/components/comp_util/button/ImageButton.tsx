@@ -31,8 +31,8 @@ const ImageButton: React.FC<ImageButtonProps> = ({
   leftIconProps,
   rightIconProps,
   onClick,
-  isDottedText,
-  minWidth,
+  // isDottedText,
+  // minWidth,
   img,
 }) => {
   return (
@@ -51,12 +51,12 @@ const ImageButton: React.FC<ImageButtonProps> = ({
           className={cn("w-16 h-16 text-white", leftClassName)}
         />
       )}
-      {/* {LeftIcon && (
+      {LeftIcon && (
         <LeftIcon
           {...leftIconProps}
           className={cn("w-[18px] text-white", leftClassName)}
         />
-      )} */}
+      )}
       <div
         className={cn(
           "flex items-center justify-center cursor-pointer",

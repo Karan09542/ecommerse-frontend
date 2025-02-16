@@ -81,7 +81,7 @@ const ResetPassword: React.FC = () => {
                 type="password"
               />
               {errors.password && (
-                <ErrorMessage message={errors.password.message} />
+                <ErrorMessage message={String(errors.password.message)} />
               )}
             </div>
             <div>
@@ -98,7 +98,9 @@ const ResetPassword: React.FC = () => {
                 type="password"
               />
               {errors.confirmPassword && (
-                <ErrorMessage message={errors.confirmPassword.message} />
+                <ErrorMessage
+                  message={String(errors.confirmPassword.message)}
+                />
               )}
             </div>
 

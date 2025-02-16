@@ -268,7 +268,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           {/* right */}
           <div className="flex gap-x-2  *:px-4">
             {rightNavList?.map((item) => {
-              if (item?.isShow === false) return null;
+              // if (item?.isShow === false) return null;
               return (
                 <LeftRightButton
                   key={typeof item?.name === "string" ? item?.name : Date.now()}

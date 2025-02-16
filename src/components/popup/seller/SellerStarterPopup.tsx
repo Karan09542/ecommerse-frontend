@@ -3,6 +3,7 @@ import {
   useAccessTokenStore,
   useBaseURLStore,
   useOpenModelStore,
+  useUserStore,
 } from "../../../../store/authStore";
 import { toast, ToastContainer } from "react-toastify";
 import CrossButton from "../../comp_util/button/CrossButton";
@@ -14,6 +15,8 @@ const SellerStarterPopup: React.FC = () => {
   const baseURL = useBaseURLStore((state) => state.baseURL);
   const accessToken = useAccessTokenStore((state) => state.accessToken);
   const [loading, setLoading] = React.useState(false);
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
 
   // fetch continue to become a seller
   const handleContinueToBecomeASeller = () => {
@@ -28,6 +31,8 @@ const SellerStarterPopup: React.FC = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
+          const updatedUser = { ...user, role: "seller" };
+          setUser(updatedUser);
           toast.success(data.message);
           setOpenModel(null);
         } else {

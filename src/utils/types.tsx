@@ -16,14 +16,15 @@ export type ProductProps = {
   _id?: string;
   name?: string;
   description?: string;
-  price?: number;
+  price?: number | string;
   rating?: number;
-  images?: string[];
+  images?: any[];
   numReviews?: number;
   category?: string;
   updatedAt?: string;
   createdAt?: string;
   stock?: number;
+  brand?: string;
 };
 
 export const productInitialState = {

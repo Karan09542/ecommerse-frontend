@@ -14,7 +14,7 @@ import MissingCart from "./util/MissingCart";
 
 const Cart: React.FC = () => {
   const baseURL = useBaseURLStore((state) => state.baseURL);
-  const [carts, setCarts] = React.useState([]);
+  const [carts, setCarts] = React.useState<any[]>([]);
   const accessToken = useAccessTokenStore((state) => state.accessToken);
   const [loading, setLoading] = React.useState(false);
 

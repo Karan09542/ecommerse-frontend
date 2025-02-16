@@ -58,12 +58,14 @@ const DashProduct: React.FC<DashProductProps> = ({ baseURL, accessToken }) => {
           return <Product key={product._id} {...product} />;
         })}
       </div>
-      <Button
-        onClick={() => setPage(page + 1)}
-        name="load more"
-        className="my-10"
-        loading={moreLoading}
-      />
+      {productData?.length > 0 && (
+        <Button
+          onClick={() => setPage(page + 1)}
+          name="load more"
+          className="my-10"
+          loading={moreLoading}
+        />
+      )}
     </div>
   );
 };

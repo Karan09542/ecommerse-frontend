@@ -8,11 +8,11 @@ type IsLoggedInState = {
 };
 
 type User = {
-  _id: string;
-  username: string;
-  email: string;
-  active: Boolean;
-  role: string;
+  _id?: string;
+  username?: string;
+  email?: string;
+  active?: Boolean;
+  role?: string;
 } | null;
 type UserState = {
   user: User;

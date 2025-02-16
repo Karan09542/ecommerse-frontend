@@ -72,12 +72,12 @@ const VerifyEmail: React.FC = () => {
               };
               return (
                 <input
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    padding: "10px",
-                    margin: "5px",
-                  }}
+                  // style={{
+                  //   width: "40px",
+                  //   height: "40px",
+                  //   padding: "10px",
+                  //   margin: "5px",
+                  // }}
                   {...props}
                   className="border border-[var(--site-color)] font-medium text-[var(--text-21)] outline-none"
                 />
