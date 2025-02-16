@@ -283,7 +283,10 @@ const Dashboard: React.FC = () => {
         theme="light"
       />
       {openModel === "confirm product delete" && <ConfirmProductDeletePopup />}
-      <div className="mx-auto" style={{ maxWidth: maxWidth }}>
+      <div
+        className="mx-auto"
+        style={{ maxWidth: maxWidth > 0 ? maxWidth : "" }}
+      >
         <h1 className="text-2xl font-semibold px-4 py-2">Dashboard</h1>
         <hr />
 
