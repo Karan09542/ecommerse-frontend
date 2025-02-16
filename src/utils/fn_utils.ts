@@ -8,7 +8,7 @@ const PNF = libphonenumber.PhoneNumberFormat;
 // const PhoneNumberType = libphonenumber.PhoneNumberType;
 
 export async function getRegion() {
-  const res = await fetch("http://ip-api.com/json");
+  const res = await fetch("https://ip-api.com/json");
   const data = await res.json();
   return data.countryCode;
 }

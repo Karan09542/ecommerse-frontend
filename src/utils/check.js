@@ -2,10 +2,10 @@ fetch("http://ip-api.com/json")
   .then((res) => res.json())
   .then((data) => {
     const cc = data.countryCode;
-    const regionFormat = new Intl.DisplayNames([cc], { type: "region" });
-    const currencyFormat = new Intl.NumberFormat(undefined);
+    // const regionFormat = new Intl.DisplayNames([cc], { type: "region" });
+    // const currencyFormat = new Intl.NumberFormat(undefined);
     // console.log(data);
-    // console.log([data?.countryCode]);
+    console.log([data?.countryCode]);
   });
 
 // import libphonenumber from "google-libphonenumber";

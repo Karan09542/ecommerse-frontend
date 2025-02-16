@@ -159,7 +159,11 @@ const Dashboard: React.FC = () => {
       });
   };
 
-  const maxWidth = window.outerWidth;
+  const [maxWidth, setMaxWidth] = React.useState(0);
+  useEffect(() => {
+    setMaxWidth(window.outerWidth);
+  }, [window.outerWidth]);
+  
   const settings = {
     dots: false,
     infinite: false,

@@ -36,7 +36,11 @@ const Search: React.FC = () => {
         setLoading(false);
       });
   }, [searchParams, page]);
-  const maxWidth = window.outerWidth;
+  const [maxWidth, setMaxWidth] = React.useState(0);
+  useEffect(() => {
+    setMaxWidth(window.outerWidth);
+  }, [window.outerWidth]);
+
   const resultsLength = results?.length;
   return (
     <>
